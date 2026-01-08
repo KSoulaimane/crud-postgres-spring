@@ -27,4 +27,14 @@ public class UserService {
     public User addUser(User user){
         return userRepository.save(user);
     }
+
+    public List<User> updateUser(Integer id, User user){
+        User existingUser = userRepository.getAllById(id);
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setAge(user.getAge());
+        existingUser.setCity(user.getCity());
+        existingUser.setEmail(user.getEmail());
+        return userRepository.findAll();
+    }
 }
