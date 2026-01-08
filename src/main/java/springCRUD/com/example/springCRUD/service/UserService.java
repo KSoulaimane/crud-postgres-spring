@@ -37,4 +37,8 @@ public class UserService {
         existingUser.setEmail(user.getEmail());
         return userRepository.findAll();
     }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
 }
