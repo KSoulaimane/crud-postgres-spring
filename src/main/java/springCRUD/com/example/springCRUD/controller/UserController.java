@@ -28,4 +28,8 @@ public class UserController {
         return userService.getByEmail(email);
     }
 
+    @PostMapping("/user")
+    public User addUser(@RequestBody User user){
+        return userService.addUser(user);
+    }
 }
