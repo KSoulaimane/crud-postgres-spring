@@ -7,6 +7,7 @@ import springCRUD.com.example.springCRUD.service.UserService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5174")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -18,13 +19,13 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public User getById(@PathVariable("id") Integer id){
         return userService.getById(id);
     }
 
-    @GetMapping("/email/{email}")
-    public List<User> getByEmail(@PathVariable("email") String email){
+    @GetMapping("/search")
+    public List<User> getByEmail(@RequestParam String email){
         return userService.getByEmail(email);
     }
 
@@ -33,12 +34,12 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @PutMapping("/id/{id}")
-    public List<User> updateUser(@PathVariable("id") Integer id, @RequestBody User user){
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable("id") Integer id, @RequestBody User user){
         return userService.updateUser(id, user);
     }
 
-    @DeleteMapping("id/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
     }

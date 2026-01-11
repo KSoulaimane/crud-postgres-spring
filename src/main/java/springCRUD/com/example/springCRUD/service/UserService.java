@@ -28,14 +28,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<User> updateUser(Integer id, User user){
+    public User updateUser(Integer id, User user){
         User existingUser = userRepository.getAllById(id);
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setAge(user.getAge());
         existingUser.setCity(user.getCity());
         existingUser.setEmail(user.getEmail());
-        return userRepository.findAll();
+        return userRepository.save(existingUser);
     }
 
     public void deleteUser(Long id){
