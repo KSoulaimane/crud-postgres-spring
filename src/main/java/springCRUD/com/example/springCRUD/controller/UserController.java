@@ -29,7 +29,7 @@ public class UserController {
         return userService.getByEmail(email);
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public User addUser(@RequestBody User user){
         return userService.addUser(user);
     }
